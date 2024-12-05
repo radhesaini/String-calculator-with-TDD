@@ -1,0 +1,10 @@
+.App-header {
+  background-color: yellow;
+  text-align: center;
+}
+
+.calculator-container {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
