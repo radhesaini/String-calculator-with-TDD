@@ -3,31 +3,43 @@ import "./App.css";
 import { useState } from "react";
 
 function App() {
+  //create state for store user input
   let [userQuery, setQuery] = useState("");
+  //create state for store result
   let [result, setResult] = useState([]);
 
   const add = () => {
+    //change multiple symbols to single
     userQuery = userQuery
       .replaceAll("//", ";")
       .replaceAll("\\n", ";")
       .replaceAll(",", ";");
+
+    //covert string to array
     let digitsArray = userQuery.split(";");
-    let sum = 0;
+
+    // define local variable for store current sum
+    let current_sum = 0;
+    // define local variable for store invalid digits result
     let errorBucket = [];
     for (let item of digitsArray) {
       if (item < 0) {
+        //push invalid digits result
         errorBucket.push(`negative numbers not allowed ${item}`);
         continue;
       } else if (item === ";" || !item) {
         continue;
       }
-      sum += parseInt(item);
+      // update sum
+      current_sum += parseInt(item);
     }
     if (errorBucket.length) {
       setResult(errorBucket);
     } else {
-      setResult([sum]);
+      setResult([current_sum]);
     }
+
+    //clear user input
     setQuery("");
   };
 
