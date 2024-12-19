@@ -1,20 +1,22 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import App from "./App";
 
-test("check is there textBox exist", () => {
-  render(<App />);
-  //catch input tag
-  const inputTag = screen.getByTestId("user-input");
-  //check it's exist or not
-  expect(inputTag).toBeTruthy();
-});
+describe("Test: dom element of Calculator", () => {
+  test("check is there textBox exist", () => {
+    render(<App />);
+    //catch input tag
+    const inputTag = screen.getByTestId("user-input");
+    //check it's exist or not
+    expect(inputTag).toBeTruthy();
+  });
 
-test("check is there button exist", () => {
-  render(<App />);
-  //catch calculator button
-  const resultBtn = screen.getByTestId("calculator-btn");
-  //verify btn
-  expect(resultBtn).toBeTruthy();
+  test("check is there button exist", () => {
+    render(<App />);
+    //catch calculator button
+    const resultBtn = screen.getByTestId("calculator-btn");
+    //verify btn
+    expect(resultBtn).toBeTruthy();
+  });
 });
 
 describe("Test: String Calculator", () => {
