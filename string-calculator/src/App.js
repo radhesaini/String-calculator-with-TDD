@@ -9,11 +9,9 @@ function App() {
   let [result, setResult] = useState([]);
 
   const add = () => {
+    setResult([]);
     //change multiple symbols to single
-    userQuery = userQuery
-      .replaceAll("//", ";")
-      .replaceAll("\\n", ";")
-      .replaceAll(",", ";");
+    userQuery = userQuery.replaceAll(/[/\\n",/]/g, ";");
 
     //covert string to array
     let digitsArray = userQuery.split(";");
@@ -49,16 +47,18 @@ function App() {
         <h1 className="heading">String Calculator</h1>
       </header>
       <div className="calculator-container">
-        <label htmlFor="user-Input">Ask me: </label>
-        <input
-          id="user-Input"
-          className="input-text"
-          type="text"
-          name="user_input"
-          value={userQuery}
-          data-testid="user-input"
-          onChange={(e) => setQuery(e.target.value)}
-        />
+        <div class="query-container">
+          <label htmlFor="user-Input">Ask me: </label>
+          <input
+            id="user-Input"
+            className="input-text"
+            type="text"
+            name="user_input"
+            value={userQuery}
+            data-testid="user-input"
+            onChange={(e) => setQuery(e.target.value)}
+          />
+        </div>
         <button
           className="calculator-btn"
           data-testid="calculator-btn"
@@ -67,8 +67,12 @@ function App() {
           Calculate
         </button>
         <div className="result-container" data-testid="result-container">
-          {result.map((item) => (
-            <div className="result" key={new Date()}>
+          {result.map((item, index) => (
+            <div
+              className="result"
+              key={index}
+              style={{ color: result.length < 2 ? "green" : "red" }}
+            >
               Result = {item}
             </div>
           ))}

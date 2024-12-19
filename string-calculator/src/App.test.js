@@ -53,7 +53,7 @@ describe("Test: String Calculator", () => {
     //get result div
     const results = screen.getByText("Result = 3");
     //verify result
-    expect(results).toBeTruthy();
+    expect(results).toBeInTheDocument();
   });
   test("check is positive add 0", () => {
     render(<App />);
@@ -68,6 +68,6 @@ describe("Test: String Calculator", () => {
     //get result tag
     const results = screen.getByText("Result = 0");
     //verify result
-    expect(results).toBeTruthy();
+    expect(results).toBeInTheDocument();
   });
 });
