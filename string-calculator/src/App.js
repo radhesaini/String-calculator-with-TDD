@@ -47,7 +47,7 @@ function App() {
         <h1 className="heading">String Calculator</h1>
       </header>
       <div className="calculator-container">
-        <div class="query-container">
+        <div className="query-container">
           <label htmlFor="user-Input">Ask me: </label>
           <input
             id="user-Input"
